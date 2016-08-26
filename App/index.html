@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>秒针官网</title>
+	<link rel="stylesheet" href="css/style.css">
+</head>
+<body ng-app='app'>
+	<div class="main">
+		<div class="container"  ng-controller='myCtrl'>
+					<div class="left">
+						<ul class="nav">
+							<li class="on"><a href="index.html">首页</a></li>
+							<li><a href="guanyuwomen.html">关于我们</a></li>
+							<li><a href="#">产品&解决方案</a></li>
+							<li><a href="xinwenzixun.html">新闻&报告</a></li>
+							<li><a href="joinus.html">加入我们</a></li>
+						</ul>
+						<div class="search">
+							<form action="">
+								<p><input type="text" name="search"></p>
+							</form>
+						</div>
+						<ol class="foot">
+							<li><a href="">使用条款</a></li>
+							<li><a href="">隐私政策</a></li>
+							<li><a href="">数据使用说明</a></li>
+						</ol>
+						<p class="copyRight">京ICP证090015号京ICP备11027288号</p>
+					</div>
+					<!--外层容器-->
+					<div class="wrapper" id="content">
+						<div class="center">
+						    <!--图片轮播-->
+						    <div class="slider" id="slider">
+						    	<ul>
+						    		<li style="z-index:1">
+						    			<div class="pic">
+						    			   <img src="img/pic1.jpg" alt="">
+						    			</div>
+						    			<div class="title">
+						    				<img src="img/banner.png" alt="">
+						    			</div>
+						    		</li>
+						    		<li>
+						    			<div class="pic">
+						    				<img src="img/pic2.jpg" alt="">
+						    			</div>
+						    		</li>
+						    	</ul>
+						    </div>
+						    <!--logo-->
+						    <div class="logo-pic"><img src="img/logo.png" alt=""></div>
+							<!--天气-->
+							<div class="weather">
+								<p><img src="" alt=""><em>多云</em></p>
+								<p><span>北京</span><span>中国</span><span>2015/10/10</span></p>
+							</div>
+							<div class="login">
+								<form action="">
+									<p>
+										<a href="#">登录</a>&nbsp;|&nbsp;&nbsp;
+										<a href="#">申请登录试用</a>
+									</p>
+								</form>
+							</div>
+							<div class="language">
+								<a href="#" class="cur">CN</a>&nbsp;
+								<a href="#">EN</a>
+							</div>
+						</div>
+						<!--如果滑过显示蓝色背景，就在right的后面添加right-blue的类-->
+						<div class="right" id="index-nav">
+              <a href="" ng-repeat='v in data'>{{v.name}}</a>
+						</div>
+					</div>
+					<!--箭头-->
+					<div class="jiantou" id="btn" ng-click='triggle()'>
+					</div>
+					<!--产品-->
+		        <div class="product-right" id="product-page">
+                      <div class="pro-page">
+           	  	          <!--如果是蓝色就在product-nav后再添加blue的类-->
+           	  	  		<div class="product-nav">  
+           	  	  			<div class="pro-title">
+           	  	  				<span>MIAOZHEN</span>
+           	  	  				<span>全线产品</span>
+           	  	  			</div>
+           	  	  			<p class="type-list" id="list-nav">
+                            <a href="" ng-repeat='v in data' ng-click='tab($index)'>{{v.name}} </a>
+           	  	  			</p>
+           	  	  		</div>
+           	  	  		<!--产品内容-->
+           	  	  		<div class="product-content" id="product-content">
+           	  	  			<!--顶部-->
+           	  	  			<div class="content-top">
+           	  	  				<p class="logo"><img src="img/logo.jpg" alt=""></p>
+           	  	  				<!--天气-->
+           	  	  				<div class="weather-two">
+           	  	  					<p class="wea-pic"><img src="img/wea.jpg" alt=""><em>多云</em></p>
+           	  	  					<p><span>北京</span><span>中国</span><span>2015/10/10</span></p>
+           	  	  				</div>
+           	  	  				<!--注册登陆-->
+           	  	  				<div class="login-two">
+           	  	  					<a href="#" class="curlink">登录</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+           	  	  					<a href="#">申请登录试用</a>
+           	  	  				</div>
+           	  	  				<!--语言-->
+           	  	  				<div class="language-two">
+           	  	  					<a href="#" class="curlink">CN</a>&nbsp;
+           	  	  					<a href="#">EN</a>
+           	  	  				</div>
+           	  	  				<div class="clear"></div>
+           	  	  			</div>
+           	  	  			<!--内容-->
+           	  	  			<div class="product-pic-box">
+                            <div class="scroll" id="scroll">
+                              <!-- 渲染 -->
+                                <div id='' class='product-type cur-type' ng-repeat='v in data'>
+                                    <div class='product-pic' ng-repeat='val in v.products'>
+                                      <div class='pos product_{{v.template_type}}_{{$index}}' ng-repeat='j in val'>
+                                        <div class='full'>
+                                          <p class='icon'>
+                                            <img src="{{j.image}}">
+                                          </p>
+                                          <h2>
+                                            <a href="">{{j.name}}</a>
+                                          </h2>
+                                          <h3>{{j.summary}}</h3>
+                                        </div>
+                                      </div>
+                                    </div>
+                                </div>
+                              </div>
+           	  	  			</div>
+           	  	  		</div>
+                      </div>
+                      <div class="product-page" id="pageNo">
+                          <span ng-repeat='v in arr' ng-click='changePage($index)'></span>
+                      </div>
+                      <div class="clear"></div>
+                      <!--背景层-->
+                      <div class="mark-bg"></div>
+		        </div>
+		       </div>
+	</div>
+  <script src='js/angular.min.js'></script>
+	<script src="js/jquery-1.11.0.min.js"></script>
+	<script src="js/index.js"></script>
+</body>
+</html>
